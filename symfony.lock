@@ -53,6 +53,18 @@
     "ralouphie/getallheaders": {
         "version": "3.0.3"
     },
+    "sensiolabs/security-checker": {
+        "version": "4.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.0",
+            "ref": "160c9b600564faa1224e8f387d49ef13ceb8b793"
+        },
+        "files": [
+            "config/packages/security_checker.yaml"
+        ]
+    },
     "symfony/cache": {
         "version": "v4.0.2"
     },
@@ -67,6 +79,9 @@
             "version": "3.3",
             "ref": "9f94d3ea453cd8a3b95db7f82592d7344fe3a76a"
         }
+    },
+    "symfony/contracts": {
+        "version": "v1.1.10"
     },
     "symfony/debug": {
         "version": "v4.0.2"
@@ -104,6 +119,9 @@
             "ref": "70e6c7b1c83d975cf1ca40f9685feeb009d70792"
         }
     },
+    "symfony/http-client": {
+        "version": "v4.4.21"
+    },
     "symfony/http-foundation": {
         "version": "v4.0.2"
     },
@@ -112,6 +130,9 @@
     },
     "symfony/lts": {
         "version": "4-dev"
+    },
+    "symfony/mime": {
+        "version": "v4.4.21"
     },
     "symfony/polyfill-ctype": {
         "version": "v1.9.0"
@@ -126,6 +147,9 @@
         "version": "v1.6.0"
     },
     "symfony/polyfill-php72": {
+        "version": "v1.22.1"
+    },
+    "symfony/polyfill-php73": {
         "version": "v1.22.1"
     },
     "symfony/process": {
