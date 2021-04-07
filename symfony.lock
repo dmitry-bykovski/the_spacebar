@@ -14,6 +14,9 @@
     "doctrine/lexer": {
         "version": "1.2.1"
     },
+    "egulias/email-validator": {
+        "version": "2.1.25"
+    },
     "guzzlehttp/guzzle": {
         "version": "6.5.5"
     },
@@ -22,6 +25,12 @@
     },
     "guzzlehttp/psr7": {
         "version": "1.8.1"
+    },
+    "knplabs/knp-markdown-bundle": {
+        "version": "1.9.0"
+    },
+    "michelf/php-markdown": {
+        "version": "1.9.0"
     },
     "monolog/monolog": {
         "version": "1.26.0"
@@ -149,6 +158,15 @@
             "ref": "70e6c7b1c83d975cf1ca40f9685feeb009d70792"
         }
     },
+    "symfony/google-mailer": {
+        "version": "4.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.4",
+            "ref": "f8fd4ddb9b477510f8f4bce2b9c054ab428c0120"
+        }
+    },
     "symfony/http-client": {
         "version": "v4.4.21"
     },
@@ -160,6 +178,18 @@
     },
     "symfony/lts": {
         "version": "4-dev"
+    },
+    "symfony/mailer": {
+        "version": "4.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.3",
+            "ref": "15658c2a0176cda2e7dba66276a2030b52bd81b2"
+        },
+        "files": [
+            "config/packages/mailer.yaml"
+        ]
     },
     "symfony/mime": {
         "version": "v4.4.21"
