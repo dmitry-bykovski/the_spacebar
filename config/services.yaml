@@ -10,7 +10,8 @@ services:
         public: false       # Allows optimizing the container by removing unused services; this also means
                             # fetching services directly from the container via $container->get() won't work.
                             # The best practice is to be explicit about your dependencies anyway.
-
+        bind:
+            $markdownLogger: '@monolog.logger.markdown'
 #
 #    bind:
 #        $markdownLogger: '@monolog.logger.markdown'
@@ -22,13 +23,14 @@ services:
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
+    App\Service\MessageGenerator:
+        arguments:
+            # this is not a string, but a reference to a service called 'logger'
+            $logger: '@monolog.logger.request'
+
     App\Controller\:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
-
-    App\Service\MarkdownHelper:
-        arguments:
-            $logger: '@monolog.logger.markdown'
 
     App\Service\SiteUpdateManager:
         arguments:

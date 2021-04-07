@@ -7,7 +7,7 @@ monolog:
             channels: ["!event"]
         markdown_logging:
             type: stream
-            path: php://stderr
+            path: '%kernel.logs_dir%/markdown.log'
             level: debug
             channels: [ "markdown" ]
         # uncomment to get logging in your browser
