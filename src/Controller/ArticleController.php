@@ -10,19 +10,27 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Service\MarkdownHelper;
 use App\Service\MessageGenerator;
 use Symfony\Component\HttpFoundation\Response;
+use App\Service\SlackClient;
 
 class ArticleController extends AbstractController
 {
+	public function __construct(bool $isDebug)
+	{
+		$this->isDebug = $isDebug;
+	}
+
 	/**
 	 * @Route("/", name="app_homepage")
 	 */
 	public function homepage(){
 		return $this->render('article/homepage.html.twig');
 	}
+
 	/**
 	 * @Route("/news/{slug}", name="article_show")
 	 */
-	public function show($slug, MarkdownHelper $markdownHelper)
+
+	public function show($slug, MarkdownHelper $markdownHelper, SlackClient $slack)
 	{
 		$comments = [
 			'I ate a normal rock once. It did NOT taste like bacon!',
@@ -45,7 +53,10 @@ strip steak pork belly aliquip capicola officia. Labore deserunt esse chicken lo
 cow est ribeye adipisicing. Pig hamburger pork belly enim. Do porchetta minim capicola irure pancetta chuck
 fugiat.
 EOF;
-//		dump($cache);die;
+		if ($slug === 'khaaaaaan') {
+			$slack->sendMessage('Boo-ga-ga', 'Hello WTF');
+		}
+//		dump($isDebug);die;
 		$articleContent = $markdownHelper->parse($articleContent);
 		return $this->render('article/show.html.twig', [
 			'title' => ucwords(str_replace('-', ' ', $slug)),
@@ -94,7 +105,6 @@ EOF;
 	 */
 	public function emailSend(SiteUpdateManager $siteUpdateManager)
 	{
-		// ...
 
 		if ($siteUpdateManager->notifyOfSiteUpdate()) {
 			$this->addFlash('success', 'Notification mail was sent successfully.');
