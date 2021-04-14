@@ -4,15 +4,16 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use App\Repository\ArticleRepository;
 use App\Service\SiteUpdateManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Service\MarkdownHelper;
 use App\Service\MessageGenerator;
 use Symfony\Component\HttpFoundation\Response;
 use App\Service\SlackClient;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class ArticleController extends AbstractController
 {
@@ -21,40 +22,43 @@ class ArticleController extends AbstractController
 		$this->isDebug = $isDebug;
 	}
 
+//Аннотации
 	/**
 	 * @Route("/", name="app_homepage")
 	 */
-	public function homepage(){
-		return $this->render('article/homepage.html.twig');
+	public function homepage(ArticleRepository $repository){
+
+		$articles = $repository -> findAllPublishedOrderedByNewest();
+//		dump($repository);die;
+
+		return $this->render('article/homepage.html.twig', [
+			'articles' => $articles,
+		]);
 	}
-//Аннотации
+
 	/**
 	 * @Route("/news/{slug}", name="article_show")
+	 *
+	 * @ParamConverter("article", options={"mapping": {"slug": "slug"}})
 	 */
-
-	public function show($slug, SlackClient $slack, EntityManagerInterface $em)
+	public function show(SlackClient $slack, Article $article)
 	{
+//		$repository = $em->getRepository(Article::class);
+//		$article = $repository->findOneBy(['slug' => $slug]);
+
+		if ($article->getSlug() === 'khaaaaaan') {
+			$slack->sendMessage('Kahn', 'Ah, Kirk, my old friend...');
+		}
+
 		$comments = [
 			'I ate a normal rock once. It did NOT taste like bacon!',
 			'Woohoo! I\'m going on an all-asteroid diet!',
 			'I like bacon too! Buy some from my site! bakinsomebacon.com',
 		];
 
-		if ($slug === 'khaaan') {
-			$slack->sendMessage('Boo-ga-ga', 'Hello WTF');
-		}
-
-		$repository = $em->getRepository(Article::class);
-		/** @var Article $article */
-		$article = $repository->findOneBy(['slug' => $slug]);
-		if (!$article){
-			throw $this->createNotFoundException(sprintf('No article for slug "%s"', $slug));
-		}
-
-//		dump($article);die;
 		return $this->render('article/show.html.twig', [
 			'article' => $article,
-			'comments' => $comments
+			'comments' => $comments,
 		]);
 	}
 
@@ -65,7 +69,6 @@ class ArticleController extends AbstractController
 	{
 		$logger->info('Article is being hearted');
 //		dump($slug, $this);
-		//TODO - actually heart/unheart the article!
 		return $this->json(['hearts' => rand(5, 100)]);
 	}
 
