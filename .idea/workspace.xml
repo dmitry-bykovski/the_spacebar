@@ -3,8 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="59e27de0-9ea2-4d82-bb2a-a0e380484a65" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/06ef1494-c420-44c9-81ff-a4e0615e3e4d.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/06ef1494-c420-44c9-81ff-a4e0615e3e4d.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/the_spacebar.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/the_spacebar.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210418172326.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Admin/ArticleAdmin.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Admin/ArticleAdmin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/TestDb.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,6 +177,7 @@
       <path value="$PROJECT_DIR$/vendor/sonata-project/admin-bundle" />
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-menu-bundle" />
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-menu" />
+      <path value="$PROJECT_DIR$/vendor/sonata-project/doctrine-orm-admin-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1qWi3AJsCqKsPfQROhH8oR0HPER" />
@@ -238,6 +244,7 @@
       <workItem from="1618509734183" duration="599000" />
       <workItem from="1618575393228" duration="12219000" />
       <workItem from="1618734994410" duration="598000" />
+      <workItem from="1618819223202" duration="4897000" />
     </task>
     <servers />
   </component>

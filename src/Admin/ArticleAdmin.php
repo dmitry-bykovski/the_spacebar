@@ -2,6 +2,7 @@
 
 namespace App\Admin;
 
+use App\Entity\Article;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -53,4 +54,11 @@ final class ArticleAdmin extends AbstractAdmin
 		->addIdentifier('createdAt')
 		->addIdentifier('updateAt');
 	}
+
+//	public function toString(object $object): string
+//	{
+//		return $object instanceof Article
+//			? $object->getTitle()
+//			: 'Blog Post'; // shown in the breadcrumb on the create view
+//	}
 }

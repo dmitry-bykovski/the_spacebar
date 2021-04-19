@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\TestDbRepository;
+use App\Repository\CategoryRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=TestDbRepository::class)
+ * @ORM\Entity(repositoryClass=CategoryRepository::class)
  */
-class TestDb
+class Category
 {
     /**
      * @ORM\Id
@@ -19,8 +19,14 @@ class TestDb
 
     /**
      * @ORM\Column(type="string", length=255)
+	 *
      */
     private $name;
+
+	/**
+	 * @ORM\OneToMany(targetEntity="BlogPost", mappedBy="category")
+	 */
+	private $blogPosts;
 
     public function getId(): ?int
     {
@@ -38,4 +44,22 @@ class TestDb
 
         return $this;
     }
+
+	/**
+	 * @return mixed
+	 */
+	public function getBlogPosts()
+	{
+		return $this->blogPosts;
+	}
+
+	/**
+	 * @param mixed $blogPosts
+	 */
+	public function setBlogPosts($blogPosts): void
+	{
+		$this->blogPosts = $blogPosts;
+	}
+
+
 }
